@@ -11,7 +11,7 @@ clock = pygame.time.Clock()
 
 FPS = 30
 
-car = pygame.image.load("mashina.jpg").convert_alpha()
+car = pygame.image.load('mashina.jpg').convert_alpha()
 
 scaled_image = pygame.transform.scale(car, (50, 100))
 
@@ -20,6 +20,7 @@ car1=Car()
 actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
 running = True
 while running:
+    clock.tick(FPS)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -33,8 +34,7 @@ while running:
             actions[1] = 1
         if pygame.key.get_pressed()[pygame.K_p]:
             actions[4] = 1
-    draw_car(screen,actions,car1,scaled_image)
     screen.fill((255, 255, 255))
+    draw_car(screen,car1,scaled_image)
     pygame.display.flip()
-    clock.tick(FPS)
 

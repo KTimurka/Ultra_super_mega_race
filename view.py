@@ -1,6 +1,6 @@
 import pygame
 
-def draw_car(screen,actions,obj,scaled_image):
+def draw_car(screen,obj,scaled_image):
     x= obj.x
     y= obj.y
     alpha = obj.angle

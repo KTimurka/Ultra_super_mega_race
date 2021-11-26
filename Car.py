@@ -9,8 +9,8 @@ class Car:
         #self.fuel = 100 # стартовое топливо в машине
         #self.acceleration =
         #self.m =
-        self.x = 100
-        self.y = 100
+        self.x = 400
+        self.y = 400
         self.angle = 0
     #def move(self):
         '''
