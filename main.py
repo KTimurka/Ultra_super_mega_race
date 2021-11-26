@@ -1,15 +1,15 @@
 import pygame
-import math
 
 from view import *
 from Car import *
+from model import *
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 screen.fill([255, 255, 255])
 clock = pygame.time.Clock()
 
-FPS = 30
+FPS = 60
 
 car = pygame.image.load('mashina.jpg').convert_alpha()
 
@@ -24,17 +24,26 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if pygame.key.get_pressed()[pygame.K_a]:
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
             actions[2] = 1
-        if pygame.key.get_pressed()[pygame.K_d]:
+        if event.type == pygame.KEYUP and event.key == pygame.K_a:
+            actions[2] = 0
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_d:
             actions[3] = 1
-        if pygame.key.get_pressed()[pygame.K_w]:
+        if event.type == pygame.KEYUP and event.key == pygame.K_d:
+            actions[3] = 0
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_w:
             actions[0] = 1
-        if pygame.key.get_pressed()[pygame.K_s]:
+        if event.type == pygame.KEYUP and event.key == pygame.K_w:
+            actions[0] = 0
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_s:
             actions[1] = 1
+        if event.type == pygame.KEYUP and event.key == pygame.K_s:
+            actions[1] = 0
         if pygame.key.get_pressed()[pygame.K_p]:
             actions[4] = 1
     screen.fill((255, 255, 255))
+    move_car(actions, car1)
     draw_car(screen,car1,scaled_image)
     pygame.display.flip()
 

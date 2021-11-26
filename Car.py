@@ -11,7 +11,7 @@ class Car:
         #self.m =
         self.x = 400
         self.y = 400
-        self.angle = 0
+        self.angle = 60
     #def move(self):
         '''
         функция задает движение машинки при нажатии на кнопки WASD
