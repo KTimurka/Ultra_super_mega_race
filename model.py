@@ -1,6 +1,9 @@
 import math
 
 def move_car(actions,obj):
+    '''
+    x,y - координаты центра машинки
+    '''
     x = obj.x
     y = obj.y
     angle = obj.angle
