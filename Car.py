@@ -12,16 +12,6 @@ class Car:
         self.x = 400
         self.y = 400
         self.angle = 60
-    #def move(self):
-        '''
-        функция задает движение машинки при нажатии на кнопки WASD
-        '''
-        '''if keys[pygame.K_a]:
-            self.angle += 1
-        elif keys[pygame.K_d]:
-            self.angle -= 1
-        elif keys[pygame.K_w]:
-            self.speed += 1
-        elif keys[pygame.K_s]:
-            self.speed -= 1'''
-        
+        self.omega = 6
+        self.k = 1
+        self.v = 0

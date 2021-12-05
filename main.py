@@ -3,6 +3,7 @@ import pygame
 from view import *
 from Car import *
 from model import *
+#from Highway_new import *
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -11,16 +12,14 @@ clock = pygame.time.Clock()
 
 FPS = 60
 
-car = pygame.image.load('mashina.jpg').convert_alpha()
-
-scaled_image = pygame.transform.scale(car, (50, 100))
-
 car1=Car()
+t = 0 # переменная отвечающая за время поворота
 
 actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
 running = True
 while running:
     clock.tick(FPS)
+    #draw_road(screen, road)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -43,7 +42,7 @@ while running:
         if pygame.key.get_pressed()[pygame.K_p]:
             actions[4] = 1
     screen.fill((255, 255, 255))
-    move_car(actions, car1)
-    draw_car(screen,car1,scaled_image)
+    move_car(actions, car1, t)
+    draw_car(screen,car1)
     pygame.display.flip()
 
