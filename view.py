@@ -21,5 +21,8 @@ def draw_road(screen, road):
                       (255, 180, 0))
     screen.blit(text1, (200, 300))
 
-def draw_console(screen,wheel):
+def draw_console(screen,wheel,obj):
+    image = pygame.transform.scale(wheel, (250, 175))
+    new_image = pygame.transform.rotate(image, obj.phi)
+    screen.blit(new_image, (750, 300))
 

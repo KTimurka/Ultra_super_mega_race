@@ -1,7 +1,7 @@
 class Car:
     def __init__(self):
-        self.x = 400
-        self.y = 400
+        self.x = 100
+        self.y = 600
         self.angle = 60
         self.phi = 0
         self.omega = 6

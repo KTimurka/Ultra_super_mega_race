@@ -17,7 +17,7 @@ car1 = Car()
 road = Highway(screen)
 # Используемые картинки в проекте
 background = pygame.image.load("menu.jpg")
-wheel =
+wheel = pygame.image.load("rule.jpg")
 
 actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
 click = False
@@ -51,5 +51,6 @@ while running:
     move_car(actions, car1, road)
     draw_road(screen, road)
     draw_car(screen,car1)
+    draw_console(screen,wheel,car1)
     pygame.display.flip()
 
