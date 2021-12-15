@@ -4,9 +4,10 @@ from view import *
 from Car import *
 from model import *
 from Highway_new import *
+from race_menu import *
 
 pygame.init()
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((1000, 700))
 screen.fill([255, 255, 255])
 clock = pygame.time.Clock()
 
@@ -15,12 +16,16 @@ FPS = 60
 car1 = Car()
 road = Highway(screen)
 t = 0
+background = pygame.image.load("menu.jpg")
 
 actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
+click = False
 running = True
+start = True
+
+show_menu()
 while running:
     clock.tick(FPS)
-    #draw_road(screen, road)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -42,9 +47,10 @@ while running:
             actions[1] = 0
         if pygame.key.get_pressed()[pygame.K_p]:
             actions[4] = 1
-    screen.fill((255, 255, 255))
-    move_car(actions, car1, t)
-    draw_road(screen, road)
-    draw_car(screen,car1)
+    if start:
+        screen.fill((255, 255, 255))
+        move_car(actions, car1, t)
+        draw_road(screen, road)
+        draw_car(screen,car1)
     pygame.display.flip()
 
