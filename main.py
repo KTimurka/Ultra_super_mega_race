@@ -21,7 +21,6 @@ background = pygame.image.load("menu.jpg")
 actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
 click = False
 running = True
-start = True
 
 show_menu()
 while running:
@@ -47,10 +46,9 @@ while running:
             actions[1] = 0
         if pygame.key.get_pressed()[pygame.K_p]:
             actions[4] = 1
-    if start:
-        screen.fill((255, 255, 255))
-        move_car(actions, car1, t)
-        draw_road(screen, road)
-        draw_car(screen,car1)
+    screen.fill((255, 255, 255))
+    move_car(actions, car1, t)
+    draw_road(screen, road)
+    draw_car(screen,car1)
     pygame.display.flip()
 
