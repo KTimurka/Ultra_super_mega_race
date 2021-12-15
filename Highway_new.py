@@ -22,5 +22,4 @@ class Highway:
                     pygame.Rect(50, 150, 100, 400)]
 
 
-
         

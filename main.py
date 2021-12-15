@@ -51,6 +51,6 @@ while running:
     move_car(actions, car1, road)
     draw_road(screen, road)
     draw_car(screen,car1)
-    draw_console(screen,wheel,car1)
+    draw_console(screen,car1)
     pygame.display.flip()
 

@@ -21,8 +21,21 @@ def draw_road(screen, road):
                       (255, 180, 0))
     screen.blit(text1, (200, 300))
 
-def draw_console(screen,wheel,obj):
-    image = pygame.transform.scale(wheel, (250, 175))
-    new_image = pygame.transform.rotate(image, obj.phi)
-    screen.blit(new_image, (750, 300))
+def draw_console(screen,obj):
+    x0 = 900
+    y0 = 400
+    pygame.draw.circle(screen,(0,0,0),(x0,y0),100,20)
+    pygame.draw.polygon(screen,(0,0,0),
+                        [
+                            (x0 - 90*cos(-obj.phi*pi/180),y0 - 10 - 90*sin(-obj.phi*pi/180)),
+                            (x0 + 90*cos(-obj.phi*pi/180),y0 - 10 + 90*sin(-obj.phi*pi/180)),
+                            (x0 + 90 * cos(-obj.phi * pi / 180)-20*sin(-obj.phi*pi/180), y0 - 10 + 20*cos(-obj.phi*pi/180) + 90 * sin(-obj.phi * pi / 180)),
+                            (x0 - 90 * cos(-obj.phi * pi / 180)-20*sin(-obj.phi*pi/180), y0 - 10 + 20*cos(-obj.phi*pi/180) - 90 * sin(-obj.phi * pi / 180))
+                        ])
+    pygame.draw.polygon(screen,(0,0,0),
+                        [
+                            (x0 - 50 * cos(-obj.phi * pi / 180), y0 - 10 - 50 * sin(-obj.phi * pi / 180)),
+                            (x0 + 50 * cos(-obj.phi * pi / 180), y0 - 10 + 50 * sin(-obj.phi * pi / 180)),
+                            (x0 - 90 * sin(-obj.phi * pi / 180), y0 + 90 * cos(-obj.phi * pi / 180))
+                        ])
 
