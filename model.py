@@ -1,24 +1,20 @@
-import math
+from math import *
 
 def move_car(actions,obj,t):
     '''
     x,y - координаты центра машинки
     '''
+    x = obj.x
+    y = obj.y
     v = obj.v
     angle = obj.angle
-    angle += actions[2] - actions[3]
-    if (v+0.01*actions[0] - 0.02*actions[1])**2 <= 1:
-        v += 0.01*actions[0] - 0.02*actions[1]
-    obj.x += -v*math.sin(angle*3.1415/180)
-    obj.y += -v*math.cos(angle*3.1415/180)
-    obj.v = v
+    phi = obj.phi
+    x1 = x - 14*sin(angle*3.1415/180) - v*sin(phi*3.1415/180)
+    y1 = y - 14*cos(angle*3.1415/180) - v*cos(phi*3.1415/180)
+    angle += v*sin((phi - angle)*3.1415/180)*180/(28*3.1415)
+    obj.x = x1 + 14*sin(angle*3.1415/180)
+    obj.y = y1 + 14*cos(angle*3.1415/180)
+    if (v + 0.01*actions[0] - 0.02*actions[1])<=1 and (v + 0.01*actions[0] - 0.02*actions[1])>=0:
+        obj.v = v + 0.01*actions[0] - 0.02*actions[1]
+    obj.phi = phi + actions[2] - actions[3]
     obj.angle = angle
-    '''x = obj.x
-    y = obj.y
-    angle = obj.angle
-    angle += actions[2]-actions[3]
-    y += -actions[0]*math.cos(angle*3.1415/180)+actions[1]*math.cos(angle*3.1415/180)
-    x += actions[1]*math.sin(angle*3.1415/180)-actions[0]*math.sin(angle*3.1415/180)
-    obj.angle = angle
-    obj.x = x
-    obj.y = y'''
