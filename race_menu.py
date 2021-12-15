@@ -43,15 +43,19 @@ class Button:
                         return 2
                 elif click[0] == 1 and self.type=='start':
                     return True
+                elif click[0] == 1 and self.type=='Map 1':
+                    return 1
+                elif click[0] == 1 and self.type=='Map 2':
+                    return 2
 
 
 
         print_text(message, x+10, y+10)
 
 def show_settings():
-    menu_bckgr = pygame.image.load('menu.png')
-    hard_btn=Button(100, 50,'hard')
-    veryhard_btn = Button(190, 50,'veryhard')
+    menu_bckgr = pygame.image.load('menu.jpg')
+    list1 = Button(100, 50,'Map 1')
+    list2 = Button(190, 50,'Map 2')
     click = pygame.mouse.get_pressed()
     show_set = True
     while show_set:
@@ -60,9 +64,9 @@ def show_settings():
                 pygame.quit()
                 quit()
         display.blit(menu_bckgr, (0, 0))
-        if hard_btn.draw(50, 50, 'HARD') == 1:
+        if list1.draw(50, 50, 'Map 1') == 1:
             return 1
-        if veryhard_btn.draw(50, 100, 'VERY HARD') == 2:
+        if list2.draw(50, 100, 'Map 2') == 2:
             return 2
 
         pygame.display.update()
@@ -72,8 +76,8 @@ def show_settings():
 def show_menu():
     menu_bckgr = pygame.image.load('menu.jpg')
 
-    start_btn=Button(100, 50,'start')
-    settings_btn=Button(140, 50,'settings')
+    start_btn = Button(100, 50,'start')
+    settings_btn = Button(140, 50,'settings')
     show = True
     while show:
         for event in pygame.event.get():
@@ -85,8 +89,10 @@ def show_menu():
             show = False
 
         if settings_btn.draw(50, 100,'SETTINGS') == 1:
-           pygame.draw.rect(display, (54,67,45), (50, 50, 50, 50))
-
+            show = True
+            #pygame.draw.rect(display, (54,67,45), (50, 50, 50, 50))
+        if settings_btn.draw(50, 100, 'SETTINGS') == 2:
+            show = True
 
 
         pygame.display.update()

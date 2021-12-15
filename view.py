@@ -21,7 +21,7 @@ def draw_road(screen, road):
                       (255, 180, 0))
     screen.blit(text1, (200, 300))
 
-def draw_console(screen,obj):
+def draw_console(screen,obj,actions):
     x0 = 900
     y0 = 400
     pygame.draw.circle(screen,(0,0,0),(x0,y0),100,20)
@@ -38,4 +38,7 @@ def draw_console(screen,obj):
                             (x0 + 50 * cos(-obj.phi * pi / 180), y0 - 10 + 50 * sin(-obj.phi * pi / 180)),
                             (x0 - 90 * sin(-obj.phi * pi / 180), y0 + 90 * cos(-obj.phi * pi / 180))
                         ])
-
+    if actions[0] == 1:
+        image = pygame.image.load("gas.png")
+        new_image = pygame.transform.scale(image,(150,150))
+        screen.blit(new_image,(800,500))
