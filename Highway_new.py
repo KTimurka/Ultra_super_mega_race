@@ -16,10 +16,10 @@ text1 = f1.render("Alpha", True,
 class Highway:
     def __init__(self, screen):
 #        self.road = ('0', '1', '2', '3')
-        self.par = [('25', '10', '40', '10'),
-                    ('40', '30', '10', '50'),
-                    ('25', '50', '40', '10'),
-                    ('10', '30', '10', '50')]
+        self.par = [pygame.Rect(50, 50, 700, 100),
+                    pygame.Rect(650, 150, 100, 400),
+                    pygame.Rect(50, 550, 700, 100),
+                    pygame.Rect(50, 150, 100, 400)]
 
 
 

@@ -15,15 +15,11 @@ def draw_car(screen,obj):
 def draw_road(screen, road):
     t = 12
     for element in road.par:
-        pygame.draw.rect(screen, (125, 125, 125),
-                    (
-                    t * (int(element[0])) - t * (int(element[2]) / 2),
-                    t * (int(element[1])) - t * (int(element[3]) / 2),
-                    t * int(element[2]),
-                    t * int(element[3]))
-                    )
+        pygame.draw.rect(screen,(125,125,125),element)
     f1 = pygame.font.SysFont('arial', 56)
     text1 = f1.render("Alpha", True,
                       (255, 180, 0))
     screen.blit(text1, (200, 300))
+
+def draw_console(screen,wheel):
 

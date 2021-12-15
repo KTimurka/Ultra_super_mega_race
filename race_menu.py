@@ -20,7 +20,7 @@ class Button:
     def __init__(self, width, height,type):
         self.width = width
         self.height = height
-        self.clr = (23, 204, 58)
+        self.clr = (255, 0, 0)
         self.type = type
 
 

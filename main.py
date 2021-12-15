@@ -15,8 +15,9 @@ FPS = 60
 
 car1 = Car()
 road = Highway(screen)
-t = 0
+# Используемые картинки в проекте
 background = pygame.image.load("menu.jpg")
+wheel =
 
 actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
 click = False
@@ -47,7 +48,7 @@ while running:
         if pygame.key.get_pressed()[pygame.K_p]:
             actions[4] = 1
     screen.fill((255, 255, 255))
-    move_car(actions, car1, t)
+    move_car(actions, car1, road)
     draw_road(screen, road)
     draw_car(screen,car1)
     pygame.display.flip()
