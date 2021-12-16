@@ -68,6 +68,8 @@ if number == 1:
 if number == 2:
     shadow = np.loadtxt("massive2.txt")
 t = 0
+pygame.mixer.music.load('ACDC.mp3')
+pygame.mixer.music.play(-1)
 while running:
     clock.tick(FPS)
     t +=1
