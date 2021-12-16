@@ -1,10 +1,6 @@
 import pygame
-<<<<<<< Updated upstream
 import numpy as np
 
-=======
-import sys
->>>>>>> Stashed changes
 from view import *
 from Car import *
 from model import *
