@@ -1,5 +1,5 @@
 import pygame
-from Highway_new import *
+
 
 display_width = 900
 display_height = 650
@@ -108,12 +108,5 @@ def show_menu(number):
         pygame.display.update()
         clock.tick(60)
     return number
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 
 

@@ -3,7 +3,6 @@ from math import *
 
 def draw_car(screen,x,y,alpha,color):
     s = 7
-<<<<<<< Updated upstream
     pygame.draw.polygon(screen, color,
             [(x - s * cos(alpha) - 2 * s * sin(alpha), y - s * sin(alpha) + 2 * s * cos(alpha)),
              (x + s * cos(alpha) - 2 * s * sin(alpha), y + s * sin(alpha) + 2 * s * cos(alpha)),
@@ -89,15 +88,3 @@ def game_over_screen (screen, obj):
         text3 = f3.render("Your result " + obj.score, True,
                       (255, 0, 0))
         screen.blit(text1, (400, 400))
-=======
-    x= obj.x
-    y= obj.y
-    alpha = -obj.angle/1
-    #rotated_image = pygame.transform.rotate(scaled_image, alpha)
-    #screen.blit(rotated_image, (x, y))
-    polygon(screen, (255, 0, 0),
-            [(x - s * cos(alpha*pi/180) - 2 * s * sin(alpha*pi/180), y - s * sin(alpha*pi/180) + 2 * s * cos(alpha*pi/180)),
-             (x + s * cos(alpha*pi/180) - 2 * s * sin(alpha*pi/180), y + s * sin(alpha*pi/180) + 2 * s * cos(alpha*pi/180)),
-             (x + s * cos(alpha*pi/180) + 2 * s * sin(alpha*pi/180), y + s * sin(alpha*pi/180) - 2 * s * cos(alpha*pi/180)),
-             (x - s * cos(alpha*pi/180) + 2 * s * sin(alpha*pi/180), y - s * sin(alpha*pi/180) - 2 * s * cos(alpha*pi/180))])
->>>>>>> Stashed changes

@@ -5,7 +5,6 @@ from view import *
 from Car import *
 from model import *
 from Highway_new import *
-<<<<<<< Updated upstream
 from race_menu import *
 
 pygame.init()
@@ -14,28 +13,8 @@ screen.fill([255, 255, 255])
 clock = pygame.time.Clock()
 
 FPS = 60
-<<<<<<< HEAD
-<<<<<<< HEAD
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)
-=======
-RED = (255,0,0)
-BLACK = (0,0,0)
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
-RED = (255,0,0)
-BLACK = (0,0,0)
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
-
-pygame.init()
-pygame.font.init()
-screen = pygame.display.set_mode((600, 600))
-screen.fill([255, 255, 255])
-clock = pygame.time.Clock()
-
-FPS = 90
->>>>>>> Stashed changes
 
 list_rects = [
     [pygame.Rect(50, 50, 700, 100),
@@ -69,10 +48,7 @@ list_rects = [
         pygame.Rect(275,100,75,20)]
 ]
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-<<<<<<< Updated upstream
 item_num_on_i_map = [[8, 2], [18, 4], [21, 4]]
 #money = [[[600, 80], [740, 80], [560, 130], [740, 450], [520, 630], [70, 630], [140, 450], [60, 350]],
 #         [[450, 125], [450, 225], [750, 250], [725, 425], [450, 600],
@@ -88,12 +64,12 @@ item_num_on_i_map = [[8, 2], [18, 4], [21, 4]]
 #        [[425, 50], [710, 350], [420, 520], [500, 50]],
 #        [[475, 225], [620, 460], [630, 325], [330, 75]]]
 money0 = [[600, 80], [740, 80], [560, 130], [740, 450], [520, 630], [70, 630], [140, 450], [60, 350]]
-fuel0 = [[670, 275], [350, 670]]
-money1 =[[450, 125], [450, 225], [750, 250], [725, 425], [450, 600],
+fuel0 = [[670, 275], [350, 570]]
+money1 =[[450, 125], [450, 225], [750, 300], [725, 425], [600, 450],
             [475, 425], [425, 500], [425, 625], [200, 670], [125, 650],
-            [75, 600], [100, 425], [175, 450], [225, 400], [125, 300],
+            [75, 600], [100, 425], [175, 450], [225, 400], [225, 300],
             [212.5, 225], [212.5, 175], [212.5, 150]]
-fuel1 = [[425, 50], [710, 350], [420, 520], [500, 50]]
+fuel1 = [[425, 50], [710, 350], [420, 520], [50, 500]]
 money2 = [[475, 75], [500, 175], [475, 300], [625, 275], [725, 300],
       [675, 400], [600, 425], [500, 400], [500, 575], [375, 650],
       [300, 625], [300, 500], [325, 400], [175, 425], [75, 400],
@@ -124,38 +100,17 @@ list_items =[[money0, fuel0], [money1, fuel1],[money2, fuel2]]
 number = 1 ##########################  Number  ---  Должно присваиваться в соответствии
            ########################## с выбранной картой!
 
-=======
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 # Используемые картинки в проекте
 background = pygame.image.load("menu.jpg")
+wheel = pygame.image.load("rule.jpg")
 
 actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
 click = False
-=======
-car1=Car()
-road = Highway(screen)
-
-actions = [0,0,0,0,0] # w = actions[0],
-                      #s = actions[1],
-                      #a = actions[2],
-                      #d = actions[3],
-                      #p = actions[4]
->>>>>>> Stashed changes
 running = True
 
 number = 0
 number = show_menu(number)
-<<<<<<< HEAD
-<<<<<<< HEAD
 road = Highway(screen, list_rects[number], list_items[number], item_num_on_i_map[number])
-=======
-road = Highway(screen,list[number])
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
-road = Highway(screen,list[number])
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 car1 = Car(road)
 
 drive = []
@@ -165,34 +120,14 @@ if number == 1:
     shadow = np.loadtxt("massive1.txt")
 if number == 2:
     shadow = np.loadtxt("massive2.txt")
-<<<<<<< HEAD
-<<<<<<< HEAD
 time = 0   #Счетчик времени
 count = 0 #Счетчик кругов
-=======
-t = 0
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
-t = 0
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 pygame.mixer.music.load('ACDC.mp3')
 pygame.mixer.music.play(-1)
 while running:
     clock.tick(FPS)
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< HEAD
     time +=1
-=======
-    t +=1
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
-    t +=1
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
     for event in pygame.event.get():
-=======
-    for event in pygame.event.get():            
->>>>>>> Stashed changes
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
@@ -216,56 +151,22 @@ while running:
     x = car1.x
     y = car1.y
     alpha = -car1.angle*pi/180
-<<<<<<< HEAD
-<<<<<<< HEAD
     if time%8 == 0:
-=======
-    if t%10 == 0:
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
-    if t%10 == 0:
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
         drive.append([x,y,alpha])
     screen.fill((255, 255, 255))
-<<<<<<< Updated upstream
     move_car(actions, car1, road)
     count = finish(car1, road, count)
     draw_road(screen, road)
-<<<<<<< HEAD
-<<<<<<< HEAD
     if time//8 < len(shadow):
         draw_car(screen, shadow[time//8][0],shadow[time//8][1],shadow[time//8][2],BLACK)
-=======
-    if t//8 < len(shadow):
-        draw_car(screen, shadow[t//8][0],shadow[t//8][1],shadow[t//8][2],BLACK)
-    draw_car(screen, x, y, alpha, RED)
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
-    if t//8 < len(shadow):
-        draw_car(screen, shadow[t//8][0],shadow[t//8][1],shadow[t//8][2],BLACK)
-    draw_car(screen, x, y, alpha, RED)
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
     draw_console(screen,car1,actions)
     draw_coin(screen, number, list_items, item_num_on_i_map)
     draw_fuel(screen, list_items, item_num_on_i_map, number)
     draw_car(screen, x, y, alpha, RED)
   #  game_over_screen(screen, car1, list_items)
-=======
-    screen.fill((0, 0, 0))
-    road.draw()
-    move_car(actions, car1)
-    draw_car(screen,car1,scaled_image)
-    
->>>>>>> Stashed changes
     pygame.display.flip()
 np_drive = np.array(drive)
-<<<<<<< HEAD
-<<<<<<< HEAD
 print(count)
-=======
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
-=======
->>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 if number == 0:
     np.savetxt("massive0.txt", np_drive)
 if number == 1:
