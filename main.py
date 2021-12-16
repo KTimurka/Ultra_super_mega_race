@@ -1,10 +1,15 @@
 import pygame
+<<<<<<< Updated upstream
 import numpy as np
 
+=======
+import sys
+>>>>>>> Stashed changes
 from view import *
 from Car import *
 from model import *
 from Highway_new import *
+<<<<<<< Updated upstream
 from race_menu import *
 
 pygame.init()
@@ -25,6 +30,16 @@ BLACK = (0,0,0)
 RED = (255,0,0)
 BLACK = (0,0,0)
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
+=======
+
+pygame.init()
+pygame.font.init()
+screen = pygame.display.set_mode((600, 600))
+screen.fill([255, 255, 255])
+clock = pygame.time.Clock()
+
+FPS = 90
+>>>>>>> Stashed changes
 
 list_rects = [
     [pygame.Rect(50, 50, 700, 100),
@@ -61,6 +76,7 @@ list_rects = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 
+<<<<<<< Updated upstream
 item_num_on_i_map = [[8, 2], [18, 4], [21, 4]]
 #money = [[[600, 80], [740, 80], [560, 130], [740, 450], [520, 630], [70, 630], [140, 450], [60, 350]],
 #         [[450, 125], [450, 225], [750, 250], [725, 425], [450, 600],
@@ -121,6 +137,16 @@ background = pygame.image.load("menu.jpg")
 
 actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
 click = False
+=======
+car1=Car()
+road = Highway(screen)
+
+actions = [0,0,0,0,0] # w = actions[0],
+                      #s = actions[1],
+                      #a = actions[2],
+                      #d = actions[3],
+                      #p = actions[4]
+>>>>>>> Stashed changes
 running = True
 
 number = 0
@@ -157,6 +183,7 @@ pygame.mixer.music.load('ACDC.mp3')
 pygame.mixer.music.play(-1)
 while running:
     clock.tick(FPS)
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
     time +=1
@@ -167,6 +194,9 @@ while running:
     t +=1
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
     for event in pygame.event.get():
+=======
+    for event in pygame.event.get():            
+>>>>>>> Stashed changes
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
@@ -201,6 +231,7 @@ while running:
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
         drive.append([x,y,alpha])
     screen.fill((255, 255, 255))
+<<<<<<< Updated upstream
     move_car(actions, car1, road)
     count = finish(car1, road, count)
     draw_road(screen, road)
@@ -223,6 +254,13 @@ while running:
     draw_fuel(screen, list_items, item_num_on_i_map, number)
     draw_car(screen, x, y, alpha, RED)
   #  game_over_screen(screen, car1, list_items)
+=======
+    screen.fill((0, 0, 0))
+    road.draw()
+    move_car(actions, car1)
+    draw_car(screen,car1,scaled_image)
+    
+>>>>>>> Stashed changes
     pygame.display.flip()
 np_drive = np.array(drive)
 <<<<<<< HEAD

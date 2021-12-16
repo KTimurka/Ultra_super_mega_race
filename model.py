@@ -7,6 +7,7 @@ def move_car(actions,obj,road):
     '''
     x = obj.x
     y = obj.y
+<<<<<<< Updated upstream
     v = obj.v
     car = pygame.Rect(x,y,7,14)
     angle = obj.angle
@@ -53,3 +54,18 @@ def finish(car,road):
     if road.par[-1].collidepoint(car.x,car.y) == -1:
         pass
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
+=======
+    
+    angle = obj.angle
+    angle += actions[2]-actions[3]
+#    y += -actions[0]*math.cos(angle*math.pi/180)+actions[1]*math.cos(angle*math.pi/180)
+#    x += actions[1]*math.sin(angle*math.pi/180)-actions[0]*math.sin(angle*math.pi/180)
+    dx = 0
+    dy = 0
+    dt = 1
+    dy += -actions[0]*math.cos(angle*math.pi/180)+actions[1]*math.cos(angle*math.pi/180)
+    dx += actions[1]*math.sin(angle*math.pi/180)-actions[0]*math.sin(angle*math.pi/180)
+    obj.angle = angle
+    obj.x += dt*dx*dx/2 
+    obj.y += dt*dy*dy/2 
+>>>>>>> Stashed changes
