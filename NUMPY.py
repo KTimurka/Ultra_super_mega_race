@@ -1,11 +1,4 @@
-import numpy as np
+import pygame
 
-a = np.array([[1, 2, 3], [3, 5, 7]])
-np.savetxt("massive.txt", a)
-
-b = np.loadtxt("massive.txt")
-
-c = np.array([1, 2, 3])
-
-newArray = np.array([c, [10, 11, 12]])
-print(newArray)
+a = pygame.Rect(20,20,20,20)
+print(a.centerx)

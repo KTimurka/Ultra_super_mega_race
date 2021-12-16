@@ -48,7 +48,6 @@ list = [
         pygame.Rect(275,100,75,20)]
 ]
 
-car1 = Car()
 # Используемые картинки в проекте
 background = pygame.image.load("menu.jpg")
 
@@ -59,6 +58,7 @@ running = True
 number = 0
 number = show_menu(number)
 road = Highway(screen,list[number])
+car1 = Car(road)
 
 drive = []
 if number == 0:
