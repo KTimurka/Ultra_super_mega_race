@@ -1,12 +1,9 @@
 import pygame
 from math import *
 
-def draw_car(screen,obj):
+def draw_car(screen,x,y,alpha,color):
     s = 7
-    x= obj.x
-    y= obj.y
-    alpha = -obj.angle*pi/180
-    pygame.draw.polygon(screen, (255, 0, 0),
+    pygame.draw.polygon(screen, color,
             [(x - s * cos(alpha) - 2 * s * sin(alpha), y - s * sin(alpha) + 2 * s * cos(alpha)),
              (x + s * cos(alpha) - 2 * s * sin(alpha), y + s * sin(alpha) + 2 * s * cos(alpha)),
              (x + s * cos(alpha) + 2 * s * sin(alpha), y + s * sin(alpha) - 2 * s * cos(alpha)),
@@ -16,6 +13,7 @@ def draw_road(screen, road):
     t = 12
     for element in road.par:
         pygame.draw.rect(screen,(125,125,125),element)
+    pygame.draw.rect(screen, (0, 0, 0), road.par[-1])
     f1 = pygame.font.SysFont('arial', 56)
     text1 = f1.render("Alpha", True,
                       (255, 180, 0))
