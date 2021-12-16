@@ -1,6 +1,6 @@
 import math
 import sys
-
+from view import *
 import pygame
 
 '''FPS = 30
@@ -14,9 +14,11 @@ f1 = pygame.font.SysFont('arial', 56)
 text1 = f1.render("Alpha", True,
                   (255, 180, 0))'''
 class Highway:
-    def __init__(self, screen,list):
+    def __init__(self, screen, list1, list2, item_num):
 #        self.road = ('0', '1', '2', '3')
-        self.par = list
+        self.par = list1
+        # количество монеток и канистр
+        # на каждой карте прописывается заранее
+        self.items = list2
+        self.item_num = item_num
 
-
-        
