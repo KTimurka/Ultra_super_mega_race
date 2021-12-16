@@ -28,6 +28,7 @@ def move_car(actions,obj,road):
         obj.phi += abs(v) * sin(-phi * 3.1415 / 180) * 180 / (35 * 3.1415)
     obj.angle = angle
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 def finish(car,road,count):
     if (road.par[-1]).collidepoint(car.x,car.y):
@@ -40,6 +41,12 @@ def finish(car,road,count):
     
 
     
+=======
+def finish(car,road):
+    count = 0
+    if road.par[-1].collidepoint(car.x,car.y) == -1:
+        pass
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 =======
 def finish(car,road):
     count = 0

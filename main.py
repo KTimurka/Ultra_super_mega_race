@@ -14,8 +14,13 @@ clock = pygame.time.Clock()
 
 FPS = 60
 <<<<<<< HEAD
+<<<<<<< HEAD
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)
+=======
+RED = (255,0,0)
+BLACK = (0,0,0)
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 =======
 RED = (255,0,0)
 BLACK = (0,0,0)
@@ -53,6 +58,7 @@ list_rects = [
         pygame.Rect(275,100,75,20)]
 ]
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 item_num_on_i_map = [[8, 2], [18, 4], [21, 4]]
@@ -108,6 +114,8 @@ number = 1 ##########################  Number  ---  Должно присваи�
 
 =======
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
+=======
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 # Используемые картинки в проекте
 background = pygame.image.load("menu.jpg")
 
@@ -118,7 +126,11 @@ running = True
 number = 0
 number = show_menu(number)
 <<<<<<< HEAD
+<<<<<<< HEAD
 road = Highway(screen, list_rects[number], list_items[number], item_num_on_i_map[number])
+=======
+road = Highway(screen,list[number])
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 =======
 road = Highway(screen,list[number])
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
@@ -132,8 +144,12 @@ if number == 1:
 if number == 2:
     shadow = np.loadtxt("massive2.txt")
 <<<<<<< HEAD
+<<<<<<< HEAD
 time = 0   #Счетчик времени
 count = 0 #Счетчик кругов
+=======
+t = 0
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 =======
 t = 0
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
@@ -142,7 +158,11 @@ pygame.mixer.music.play(-1)
 while running:
     clock.tick(FPS)
 <<<<<<< HEAD
+<<<<<<< HEAD
     time +=1
+=======
+    t +=1
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 =======
     t +=1
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
@@ -171,7 +191,11 @@ while running:
     y = car1.y
     alpha = -car1.angle*pi/180
 <<<<<<< HEAD
+<<<<<<< HEAD
     if time%8 == 0:
+=======
+    if t%10 == 0:
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 =======
     if t%10 == 0:
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
@@ -181,8 +205,14 @@ while running:
     count = finish(car1, road, count)
     draw_road(screen, road)
 <<<<<<< HEAD
+<<<<<<< HEAD
     if time//8 < len(shadow):
         draw_car(screen, shadow[time//8][0],shadow[time//8][1],shadow[time//8][2],BLACK)
+=======
+    if t//8 < len(shadow):
+        draw_car(screen, shadow[t//8][0],shadow[t//8][1],shadow[t//8][2],BLACK)
+    draw_car(screen, x, y, alpha, RED)
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 =======
     if t//8 < len(shadow):
         draw_car(screen, shadow[t//8][0],shadow[t//8][1],shadow[t//8][2],BLACK)
@@ -196,7 +226,10 @@ while running:
     pygame.display.flip()
 np_drive = np.array(drive)
 <<<<<<< HEAD
+<<<<<<< HEAD
 print(count)
+=======
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 =======
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 if number == 0:

@@ -109,7 +109,10 @@ def show_menu(number):
         clock.tick(60)
     return number
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 
 >>>>>>> 5e326a6ae048ef153932acd0e92bd8af9e465ac8
 
