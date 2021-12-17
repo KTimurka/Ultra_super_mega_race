@@ -27,13 +27,15 @@ def move_car(actions,obj,road):
     if obj.phi != 0:
         obj.phi += abs(v) * sin(-phi * 3.1415 / 180) * 180 / (35 * 3.1415)
     obj.angle = angle
+    obj.fuel -= 0.08
 
-def finish(car,road,count):
+def finish(car,road):
     y0 = (road.par[-1]).centery
     newy = car.y + car.v*cos(-car.angle*pi/180)
+    param = False
     if car.y < y0 and newy > y0:
-            count += 1
-    return(count)
+            param = True
+    return(param)
         
     
 

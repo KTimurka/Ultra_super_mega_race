@@ -64,18 +64,18 @@ item_num_on_i_map = [[8, 2], [18, 4], [21, 4]]
 #        [[425, 50], [710, 350], [420, 520], [500, 50]],
 #        [[475, 225], [620, 460], [630, 325], [330, 75]]]
 money0 = [[600, 80, 1], [740, 80, 1], [560, 130, 1], [740, 450, 1], [520, 630, 1], [70, 630, 1], [140, 450, 1], [60, 350, 1]]
-fuel0 = [[670, 275], [350, 570]]
+fuel0 = [[670, 275,1], [350, 570,1]]
 money1 =[[450, 125, 1], [450, 225, 1], [750, 300, 1], [725, 425, 1], [600, 450, 1],
             [475, 425, 1], [425, 500, 1], [425, 625, 1], [200, 670, 1], [125, 650, 1],
             [75, 600, 1], [100, 425, 1], [175, 450, 1], [225, 400, 1], [225, 300, 1],
             [212.5, 225, 1], [212.5, 175, 1], [212.5, 150, 1]]
-fuel1 = [[425, 50], [710, 350], [420, 520], [50, 500]]
+fuel1 = [[425, 50,1], [710, 350,1], [420, 520,1], [50, 500,1]]
 money2 = [[475, 75, 1], [500, 175, 1], [475, 300, 1], [625, 275, 1], [725, 300, 1],
       [675, 400, 1], [600, 425, 1], [500, 400, 1], [500, 575, 1], [375, 650, 1],
       [300, 625, 1], [300, 500, 1], [325, 400, 1], [175, 425, 1], [75, 400, 1],
       [125, 300, 1], [325, 300, 1], [300, 230, 1], [312.5, 190, 1], [312.5, 170, 1],
       [312.5, 150, 1]]
-fuel2 = [[475, 225], [620, 425], [325, 630], [75, 330]]
+fuel2 = [[475, 225,1], [620, 425,1], [325, 630,1], [75, 330,1]]
 list_items =[[money0, fuel0], [money1, fuel1],[money2, fuel2]]
     ############# списочек монет и канистр соответственно
     # для первой карты 10 + 4
@@ -151,20 +151,22 @@ while running:
     x = car1.x
     y = car1.y
     alpha = -car1.angle*pi/180
-    if time%8 == 0:
+    if time%5 == 0:
         drive.append([x,y,alpha])
     screen.fill((255, 255, 255))
     move_car(actions, car1, road)
-    count = finish(car1, road, count)
+    if finish(car1, road):
+        count+=1
     if count == 3:
         running = False
     draw_road(screen, road)
-    if time//8 < len(shadow):
-        draw_car(screen, shadow[time//8][0],shadow[time//8][1],shadow[time//8][2],BLACK)
+    if time//5 < len(shadow):
+        draw_car(screen, shadow[time//5][0],shadow[time//5][1],shadow[time//5][2],BLACK)
     draw_console(screen,car1,actions,count, f1,time)
     draw_coin(screen, number, list_items, item_num_on_i_map)
     collect_coin(car1,number,item_num_on_i_map, list_items)
-    draw_fuel(screen, list_items, item_num_on_i_map, number)
+    collect_fuel(car1,number,item_num_on_i_map,list_items)
+    draw_fuel(screen, list_items, item_num_on_i_map, number, road, car1)
     draw_car(screen, x, y, alpha, RED)
     game_over_screen(screen, car1, running, time, count)
     pygame.display.flip()

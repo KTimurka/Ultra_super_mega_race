@@ -1,5 +1,6 @@
 import pygame
 from math import *
+from model import *
 
 def draw_car(screen,x,y,alpha,color):
     s = 7
@@ -45,6 +46,7 @@ def draw_console(screen,obj,actions, count, f1,time):
     screen.blit(text1, (800, 50))
     screen.blit(text2, (800, 100))
     pygame.draw.rect(screen,(255,0,0),(800,150,1.5*obj.fuel,20))
+    pygame.draw.rect(screen, (0, 0, 0), (800, 150, 150, 20),2)
 
 
 def draw_coin (screen, number, list_items, item_num_on_i_map):
@@ -52,27 +54,31 @@ def draw_coin (screen, number, list_items, item_num_on_i_map):
         if list_items[number][0][i][2] == 1:
             pygame.draw.circle(screen, (255, 215, 0), (list_items[number][0][i][0], list_items[number][0][i][1]), 5)
 
-def draw_fuel (screen, list_items, item_num_on_i_map, number):
+def draw_fuel (screen, list_items, item_num_on_i_map, number,road,obj):
     t = 5
-    for i in range (item_num_on_i_map[number][1]):
-        x = list_items[number][1][i][0]          # индексы означают:
-        y = list_items[number][1][i][1]          # number - номер карты 
-                                               # [0 / 1] - монетка или топливо
-                                               # [i] - порядковый номер монетки,
-                                               # ее координаты по-отдельности
-        pygame.draw.polygon(screen, (255, 0, 0),
+    for i in range(item_num_on_i_map[number][1]):
+        if (list_items[number][1][i][2] == 1) or (finish(obj,road)):
+            if finish(obj,road):
+                obj.fuel = 100
+                list_items[number][1][i][2] = 1
+            x = list_items[number][1][i][0]  # индексы означают:
+            y = list_items[number][1][i][1]  # number - номер карты
+            # [0 / 1] - монетка или топливо
+            # [i] - порядковый номер монетки,
+            # ее координаты по-отдельности
+            pygame.draw.polygon(screen, (255, 0, 0),
                             [(x, y),
                             (x+2*t, y),
                             (x+3*t, y+t),
                             (x+3*t, y+3*t),
                             (x, y+3*t)])
-        pygame.draw.polygon(screen, (0, 0, 0),
+            pygame.draw.polygon(screen, (0, 0, 0),
                             [(x+2.25*t, y+0.25*t),
                             (x+2.75*t, y),
                             (x+2.25*t, y+0.25*t),
                             (x+3*t, y+3*t),
                             (x, y+3*t)])
-        pygame.draw.rect(screen, (255, 255, 255), (x+0.5*t, y+0.5*t, 1.2*t, 0.7*t))
+            pygame.draw.rect(screen, (255, 255, 255), (x+0.5*t, y+0.5*t, 1.2*t, 0.7*t))
         
 def collect_coin(obj, number, item_num_on_i_map, list_items):
     for i in range (item_num_on_i_map[number][0]):
@@ -96,7 +102,7 @@ def game_over_screen (screen, obj, running, time, count):
         screen.blit(text2, (100, 400))
 
         f3 = pygame.font.SysFont('arial', 36)
-        text3 = f3.render("Your result " + obj.score, True,
+        text3 = f3.render("Your result " + str(obj.score), True,
                       (255, 0, 0))
         screen.blit(text3, (100, 550))
     if not(running):
@@ -107,17 +113,28 @@ def game_over_screen (screen, obj, running, time, count):
                     pygame.quit()
                     quit()
             screen.fill((0, 0, 0))
-
-            f1 = pygame.font.SysFont('arial', 72)
-            text1 = f1.render("You Finished! Congratulations!", True,
+            if count == 3:
+                f1 = pygame.font.SysFont('arial', 72)
+                text1 = f1.render("You Finished! Congratulations!", True,
                           (255, 255, 255))
-            screen.blit(text1, (100, 150))
-            f2 = pygame.font.SysFont('arial', 48)
-            text2 = f2.render("Time: " + str(time//60), True,
+                screen.blit(text1, (100, 150))
+                f2 = pygame.font.SysFont('arial', 48)
+                text2 = f2.render("Time: " + str(time//60), True,
                               (255, 255, 255))
-            screen.blit(text2, (100, 400))
-            f3 = pygame.font.SysFont('arial', 48)
-            text3 = f3.render("Your result " + str(obj.score), True,
+                screen.blit(text2, (100, 400))
+                f3 = pygame.font.SysFont('arial', 48)
+                text3 = f3.render("Your result " + str(obj.score), True,
                               (255, 255, 255))
-            screen.blit(text3, (100, 550))
+                screen.blit(text3, (100, 550))
+            else:
+                image = pygame.image.load("family.jpg")
+                new_image = pygame.transform.scale(image, (1000, 700))
+                screen.blit(new_image, (0, 0))
             pygame.display.update()
+
+def collect_fuel(obj, number, item_num_on_i_map, list_items):
+    for i in range (item_num_on_i_map[number][1]):
+        if (abs(obj.x - list_items[number][1][i][0]) +
+           abs(obj.y - list_items[number][1][i][1]) < 25) and (list_items[number][1][i][2] == 1):
+               obj.fuel = 100
+               list_items[number][1][i][2] = 0
