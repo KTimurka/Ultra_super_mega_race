@@ -1,6 +1,6 @@
 import pygame
 
-
+# Размеры и инициализация
 display_width = 900
 display_height = 650
 show = True
@@ -10,12 +10,14 @@ clock = pygame.time.Clock()
 display = pygame.display.set_mode((display_width, display_height))
 
 
+# Функция вывода текста в кнопке
 def print_text(message, x, y, font_color=(0, 0, 0), font_type='PingPong.ttf', font_size=30):
     font_type = pygame.font.Font(font_type, font_size)
     text = font_type.render(message, True, font_color)
     display.blit(text, (x, y))
 
 
+# А вот и сама кнопка
 class Button:
     def __init__(self, width, height,type):
         self.width = width
@@ -24,8 +26,8 @@ class Button:
         self.type = type
 
 
-
     def draw(self, x, y, message, action=None):
+        '''Функция рисует кнопку и подсвечивает при наведении курсора.'''
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
         if x < mouse[0] < x+self.width:
@@ -33,7 +35,9 @@ class Button:
                 pygame.draw.rect(display, self.clr, (x, y, self.width, self.height))
         print_text(message, x+10, y+10)
 
+
     def click(self, x, y, message, action=None):
+        '''Функция проверяет, было ли нажатие на кнопку.'''
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
         if x < mouse[0] < x + self.width:
@@ -41,7 +45,9 @@ class Button:
                 if click[0] == 1:
                     return True
 
+
 def show_settings():
+    '''Меню настроек. Запускает вспомогательное окно с настройками.'''
     menu_bckgr = pygame.image.load('menu.jpg')
     list1 = Button(100, 50,'Map 1')
     list2 = Button(100, 50,'Map 2')
@@ -73,8 +79,8 @@ def show_settings():
 
 
 def show_menu(number):
+    '''Основное меню. Запускает его отображение и возвращает номер выбранной карты.'''
     menu_bckgr = pygame.image.load('menu.jpg')
-
     start_btn = Button(100, 50,'start')
     settings_btn = Button(140, 50,'settings')
     show = True

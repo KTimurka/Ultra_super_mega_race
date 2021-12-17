@@ -1,10 +1,11 @@
 from math import *
 import pygame
 
+
 def move_car(actions,obj,road):
-    '''
-    x,y - координаты центра машинки
-    '''
+    '''Функция физично рассчитывает движение машинки и ее повороты.
+    Доверьтесь, там все прекрасно :)
+    x,y - координаты центра машинки'''
     x = obj.x
     y = obj.y
     v = obj.v
@@ -29,13 +30,33 @@ def move_car(actions,obj,road):
     obj.angle = angle
     obj.fuel -= 0.08
 
+
 def finish(car,road):
+    '''Функция проверяет пересечение черты финиша. Возвращает True если пересечение было.'''
     y0 = (road.par[-1]).centery
     newy = car.y + car.v*cos(-car.angle*pi/180)
     param = False
     if car.y < y0 and newy > y0:
             param = True
     return(param)
+
+
+def collect_coin(obj, number, item_num_on_i_map, list_items):
+    '''Функция проверяет касание монетки. Обрабатывает сбор и удаляет собранные монетки.'''
+    for i in range (item_num_on_i_map[number][0]):
+        if (abs(obj.x - list_items[number][0][i][0]) +
+           abs(obj.y - list_items[number][0][i][1]) < 21) and (list_items[number][0][i][2] == 1):
+               obj.score += 1
+               list_items[number][0][i][2] = 0
+
+
+def collect_fuel(obj, number, item_num_on_i_map, list_items):
+    '''Функция проверяет касание топлива. Обрабатывает сбор и удаляет собранное топливо.'''
+    for i in range (item_num_on_i_map[number][1]):
+        if (abs(obj.x - list_items[number][1][i][0]) +
+           abs(obj.y - list_items[number][1][i][1]) < 25) and (list_items[number][1][i][2] == 1):
+               obj.fuel = 100
+               list_items[number][1][i][2] = 0
         
     
 

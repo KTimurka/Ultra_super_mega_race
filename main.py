@@ -12,10 +12,13 @@ screen = pygame.display.set_mode((1000, 700))
 screen.fill([255, 255, 255])
 clock = pygame.time.Clock()
 
+# Параметры отрисовки
 FPS = 60
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)
 
+# ВНИМАНИЕ!!! Дальше 50 строк захардкоженных дорог. Берегите ваши глаза)
+# Спасибо за понимание! :)
 list_rects = [
     [pygame.Rect(50, 50, 700, 100),
         pygame.Rect(650, 150, 100, 400),
@@ -48,86 +51,67 @@ list_rects = [
         pygame.Rect(275,100,75,20)]
 ]
 
-
 item_num_on_i_map = [[8, 2], [18, 4], [21, 4]]
-#money = [[[600, 80], [740, 80], [560, 130], [740, 450], [520, 630], [70, 630], [140, 450], [60, 350]],
-#         [[450, 125], [450, 225], [750, 250], [725, 425], [450, 600],
-#         [475, 425], [425, 500], [425, 625], [200, 670], [125, 650],
-#         [75, 600], [100, 425], [175, 450], [225, 400], [125, 300],
-#         [212.5, 225], [212.5, 175], [212.5, 150]],
-#         [[475, 75], [500, 175], [475, 300], [625, 275], [725, 300],
-#      [675, 400], [600, 425], [500, 400], [500, 575], [375, 650],
-#      [300, 625], [300, 500], [325, 400], [175, 425], [75, 400],
-#      [125, 300], [325, 300], [300, 200], [312.5, 160], [312.5, 140],
-#      [312.5, 120]]]
-#fuel = [[[670, 275], [350, 670]],
-#        [[425, 50], [710, 350], [420, 520], [500, 50]],
-#        [[475, 225], [620, 460], [630, 325], [330, 75]]]
-money0 = [[600, 80, 1], [740, 80, 1], [560, 130, 1], [740, 450, 1], [520, 630, 1], [70, 630, 1], [140, 450, 1], [60, 350, 1]]
+money0 = [
+            [600, 80, 1], [740, 80, 1], [560, 130, 1], [740, 450, 1], [520, 630, 1],
+            [70, 630, 1], [140, 450, 1], [60, 350, 1]
+          ]
 fuel0 = [[670, 275,1], [350, 570,1]]
-money1 =[[450, 125, 1], [450, 225, 1], [750, 300, 1], [725, 425, 1], [600, 450, 1],
+money1 =[
+            [450, 125, 1], [450, 225, 1], [750, 300, 1], [725, 425, 1], [600, 450, 1],
             [475, 425, 1], [425, 500, 1], [425, 625, 1], [200, 670, 1], [125, 650, 1],
             [75, 600, 1], [100, 425, 1], [175, 450, 1], [225, 400, 1], [225, 300, 1],
-            [212.5, 225, 1], [212.5, 175, 1], [212.5, 150, 1]]
+            [212.5, 225, 1], [212.5, 175, 1], [212.5, 150, 1]
+         ]
 fuel1 = [[425, 50,1], [710, 350,1], [420, 520,1], [50, 500,1]]
-money2 = [[475, 75, 1], [500, 175, 1], [475, 300, 1], [625, 275, 1], [725, 300, 1],
-      [675, 400, 1], [600, 425, 1], [500, 400, 1], [500, 575, 1], [375, 650, 1],
-      [300, 625, 1], [300, 500, 1], [325, 400, 1], [175, 425, 1], [75, 400, 1],
-      [125, 300, 1], [325, 300, 1], [300, 230, 1], [312.5, 190, 1], [312.5, 170, 1],
-      [312.5, 150, 1]]
+money2 = [
+            [475, 75, 1], [500, 175, 1], [475, 300, 1], [625, 275, 1], [725, 300, 1],
+            [675, 400, 1], [600, 425, 1], [500, 400, 1], [500, 575, 1], [375, 650, 1],
+            [300, 625, 1], [300, 500, 1], [325, 400, 1], [175, 425, 1], [75, 400, 1],
+            [125, 300, 1], [325, 300, 1], [300, 230, 1], [312.5, 190, 1], [312.5, 170, 1],
+            [312.5, 150, 1]
+        ]
 fuel2 = [[475, 225,1], [620, 425,1], [325, 630,1], [75, 330,1]]
 list_items =[[money0, fuel0], [money1, fuel1],[money2, fuel2]]
-    ############# списочек монет и канистр соответственно
-    # для первой карты 10 + 4
-    
-   # [[ (, ), (, ), (, ), (, ), (, ),
-   #   (, ), (, ), (, ), (, ), (, )
-   #     ],
-    #[(, ), (, ), (, ), (, )]]
-
-    ############# для второй карты 18 + 4
-    
-           
-
-    ############# для третьей карты 21 + 5
-    
-  
-     
-     ###########
-     
-
-number = 1 ##########################  Number  ---  Должно присваиваться в соответствии
-           ########################## с выбранной картой!
+# Уже можно открывать глаза...
 
 # Используемые картинки в проекте
 background = pygame.image.load("menu.jpg")
-wheel = pygame.image.load("rule.jpg")
 
-actions = [0,0,0,0,0] # w = actions[0], s = actions[1], a = actions[2], d = actions[3], p = actions[4]
-click = False
-running = True
+# Инициализация переменных
+number = 0              # Номер выбранной карты - 1
+time = 0                # Счетчик времени
+count = 0               # Счетчик кругов
+running = True          # Флаг
+actions = [0,0,0,0]     # w = actions[0], s = actions[1], a = actions[2], d = actions[3]
 
-number = 0
+# Создание игровых объектов
 number = show_menu(number)
 road = Highway(screen, list_rects[number], list_items[number], item_num_on_i_map[number])
 car1 = Car(road)
 
+# Массив, куда будем записывать координаты "тени"
 drive = []
+
+# Запуск "тени" для соответствующей карты
 if number == 0:
     shadow = np.loadtxt("massive0.txt")
 if number == 1:
     shadow = np.loadtxt("massive1.txt")
 if number == 2:
     shadow = np.loadtxt("massive2.txt")
-time = 0   #Счетчик времени
-count = 0 #Счетчик кругов
+
+# Музыка и шрифт
 pygame.mixer.music.load('ACDC.mp3')
 pygame.mixer.music.play(-1)
 f1 = pygame.font.Font(None, 36)
+
 while running:
     clock.tick(FPS)
     time +=1
     for event in pygame.event.get():
+
+        # Диспетчеризация событий с клавиатуры
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
@@ -146,28 +130,34 @@ while running:
             actions[1] = 1
         if event.type == pygame.KEYUP and event.key == pygame.K_s:
             actions[1] = 0
-        if pygame.key.get_pressed()[pygame.K_p]:
-            actions[4] = 1
+
+    # Запись "Тени" машинки
     x = car1.x
     y = car1.y
     alpha = -car1.angle*pi/180
     if time%5 == 0:
         drive.append([x,y,alpha])
-    screen.fill((255, 255, 255))
+
+    # Обработка событий с объектами
     move_car(actions, car1, road)
+    collect_coin(car1, number, item_num_on_i_map, list_items)
+    collect_fuel(car1, number, item_num_on_i_map, list_items)
     if finish(car1, road):
         count+=1
     if count == 3:
         running = False
+
+    # Блок отрисовки всех элементов
+    screen.fill((255, 255, 255))
     draw_road(screen, road, number)
     if time//5 < len(shadow):
         draw_car(screen, shadow[time//5][0],shadow[time//5][1],shadow[time//5][2],BLACK)
-    draw_console(screen,car1,actions,count, f1,time)
     draw_coin(screen, number, list_items, item_num_on_i_map)
-    collect_coin(car1,number,item_num_on_i_map, list_items)
-    collect_fuel(car1,number,item_num_on_i_map,list_items)
     draw_fuel(screen, list_items, item_num_on_i_map, number, road, car1)
     draw_car(screen, x, y, alpha, RED)
+    draw_console(screen, car1, actions, count, f1, time)
+
+    # Проверка, не закончилась ли игра
     game_over_screen(screen, car1, running, time, count)
     pygame.display.flip()
 
