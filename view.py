@@ -19,7 +19,7 @@ def draw_road(screen, road):
                       (255, 180, 0))
     screen.blit(text1, (200, 300))
 
-def draw_console(screen,obj,actions, count, f1):
+def draw_console(screen,obj,actions, count, f1,time):
     x0 = 900
     y0 = 400
     pygame.draw.circle(screen,(0,0,0),(x0,y0),100,20)
@@ -41,7 +41,10 @@ def draw_console(screen,obj,actions, count, f1):
         new_image = pygame.transform.scale(image,(150,150))
         screen.blit(new_image,(800,500))
     text1 = f1.render('Circle: ' + str(count), True, (0, 0, 0))
-    screen.blit(text1, (900, 50))
+    text2 = f1.render('Time: ' + str(time//60), True, (0,0,0))
+    screen.blit(text1, (800, 50))
+    screen.blit(text2, (800, 100))
+    pygame.draw.rect(screen,(255,0,0),(800,150,1.5*obj.fuel,20))
 
 
 def draw_coin (screen, number, list_items, item_num_on_i_map):
@@ -78,7 +81,7 @@ def collect_coin(obj, number, item_num_on_i_map, list_items):
                obj.score += 1
                list_items[number][0][i][2] = 0
 
-def game_over_screen (screen, obj, running, time):
+def game_over_screen (screen, obj, running, time, count):
     if obj.fuel <= 0:
         screen.fill((0, 0, 0))
         
