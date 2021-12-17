@@ -97,7 +97,7 @@ def draw_fuel (screen, list_items, item_num_on_i_map, number,road,obj):
             pygame.draw.rect(screen, (125, 125, 125), (x+0.5*t, y+0.5*t, 1.2*t, 0.7*t))
 
 
-def game_over_screen (screen, obj, running, time, count,best):
+def game_over_screen (screen, obj, running, time, count,best,score):
     '''Запускает окно проигрыша по окончании игры.'''
     if obj.fuel <= 0:
         screen.fill((0, 0, 0))
@@ -108,12 +108,12 @@ def game_over_screen (screen, obj, running, time, count,best):
         screen.blit(text1, (100, 250))
         
         f2 = pygame.font.SysFont('arial', 48)
-        text2 = f2.render("Out of fuel", True,
+        text2 = f2.render("Out of fuel :9", True,
                       (255, 0, 0))
         screen.blit(text2, (100, 400))
 
         f3 = pygame.font.SysFont('arial', 36)
-        text3 = f3.render("Your result " + str(obj.score), True,
+        text3 = f3.render("Your score: " + str(obj.score), True,
                       (255, 0, 0))
         screen.blit(text3, (100, 550))
         pygame.display.update()
@@ -129,15 +129,19 @@ def game_over_screen (screen, obj, running, time, count,best):
             f2 = pygame.font.SysFont('arial', 48)
             text2 = f2.render("Time: " + str(time//60), True,
                           (255, 255, 255))
-            screen.blit(text2, (100, 400))
+            screen.blit(text2, (100, 350))
             f3 = pygame.font.SysFont('arial', 48)
-            text3 = f3.render("Your result: " + str(obj.score), True,
+            text3 = f3.render("Your score: " + str(obj.score), True,
                           (255, 255, 255))
-            screen.blit(text3, (100, 450))
+            screen.blit(text3, (100, 400))
             f4 = pygame.font.SysFont('arial', 48)
             text4 = f4.render("Best time: " + str(best//60), True,
                               (255, 255, 255))
-            screen.blit(text4, (100, 500))
+            screen.blit(text4, (100, 450))
+            f5 = pygame.font.SysFont('arial', 48)
+            text5 = f5.render("Best score: " + str(score), True,
+                              (255, 255, 255))
+            screen.blit(text5, (100, 500))
         else:
             image = pygame.image.load("family.jpg")
             new_image = pygame.transform.scale(image, (1000, 700))

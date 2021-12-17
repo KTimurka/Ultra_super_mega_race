@@ -164,6 +164,7 @@ while running:
 
 
 best = np.loadtxt("time.txt")
+score = np.loadtxt("best_score.txt")
 start = True
 while start:
     for event in pygame.event.get():
@@ -171,19 +172,31 @@ while start:
         # Диспетчеризация событий с клавиатуры
         if event.type == pygame.QUIT:
             start = False
-    game_over_screen(screen, car1, running, time, count,best[number])
+    game_over_screen(screen, car1, running, time, count,best[number],score[number])
 
 
 np_drive = np.array(drive)
-if number == 0 and count == 3 and time<best[0]:
-    np.savetxt("massive0.txt", np_drive)
-    new_best = np.array([time,best[1],best[2]])
-    np.savetxt("time.txt", new_best)
-if number == 1 and count == 3 and time<best[1]:
-    np.savetxt("massive1.txt", np_drive)
-    new_best = np.array([best[0], time, best[2]])
-    np.savetxt("time.txt", new_best)
-if number == 2 and count == 3 and time<best[2]:
-    np.savetxt("massive2.txt", np_drive)
-    new_best = np.array([best[0], best[1], time])
-    np.savetxt("time.txt", new_best)
+if number == 0 and count == 3:
+    if time<best[0]:
+        np.savetxt("massive0.txt", np_drive)
+        new_best = np.array([time,best[1],best[2]])
+        np.savetxt("time.txt", new_best)
+    if car1.score > score[0]:
+        new_score = np.array([car1.score, score[1], score[2]])
+        np.savetxt("best_score.txt", new_score)
+if number == 1 and count == 3:
+    if time<best[1]:
+        np.savetxt("massive1.txt", np_drive)
+        new_best = np.array([best[0], time, best[2]])
+        np.savetxt("time.txt", new_best)
+    if car1.score > score[1]:
+        new_score = np.array([score[0], car1.score, score[2]])
+        np.savetxt("best_score.txt", new_score)
+if number == 2 and count == 3:
+    if time<best[2]:
+        np.savetxt("massive2.txt", np_drive)
+        new_best = np.array([best[0], best[1], time])
+        np.savetxt("time.txt", new_best)
+    if car1.score > score[2]:
+        new_score = np.array([score[0], score[1], car1.score])
+        np.savetxt("best_score.txt", new_score)
