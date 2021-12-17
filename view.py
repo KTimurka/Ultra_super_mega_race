@@ -77,17 +77,17 @@ def game_over_screen (screen, obj, running, time):
         f1 = pygame.font.SysFont('arial', 72)
         text1 = f1.render("Game over", True,
                       (255, 0, 0))
-        screen.blit(text1, (400, 300))
+        screen.blit(text1, (100, 250))
         
         f2 = pygame.font.SysFont('arial', 48)
         text2 = f2.render("Out of fuel", True,
                       (255, 0, 0))
-        screen.blit(text1, (400, 370))
+        screen.blit(text2, (100, 400))
 
         f3 = pygame.font.SysFont('arial', 36)
         text3 = f3.render("Your result " + obj.score, True,
                       (255, 0, 0))
-        screen.blit(text1, (400, 400))
+        screen.blit(text3, (100, 550))
     if not(running):
         start = True
         while start:
