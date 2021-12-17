@@ -124,6 +124,7 @@ time = 0   #Счетчик времени
 count = 0 #Счетчик кругов
 pygame.mixer.music.load('ACDC.mp3')
 pygame.mixer.music.play(-1)
+f1 = pygame.font.Font(None, 36)
 while running:
     clock.tick(FPS)
     time +=1
@@ -156,6 +157,10 @@ while running:
     screen.fill((255, 255, 255))
     move_car(actions, car1, road)
     count = finish(car1, road, count)
+    text1 = f1.render('Circle: ' + str(count), True, (0, 0, 0))
+    screen.blit(text1,(900,50))
+    if count == 2:
+        running = False
     draw_road(screen, road)
     if time//8 < len(shadow):
         draw_car(screen, shadow[time//8][0],shadow[time//8][1],shadow[time//8][2],BLACK)

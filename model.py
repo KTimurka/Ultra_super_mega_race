@@ -29,12 +29,11 @@ def move_car(actions,obj,road):
     obj.angle = angle
 
 def finish(car,road,count):
-    if (road.par[-1]).collidepoint(car.x,car.y):
-        if car.v*cos(-car.angle*pi/180) > 0:
+    y0 = (road.par[-1]).centery
+    newy = car.y + car.v*cos(-car.angle*pi/180)
+    if car.y < y0 and newy > y0:
             count += 1
     return(count)
-
-    obj.fuel -= 0.05
         
     
 
