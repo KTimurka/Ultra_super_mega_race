@@ -114,18 +114,21 @@ def game_over_screen (screen, obj, running, time, count):
                     quit()
             screen.fill((0, 0, 0))
             if count == 3:
+                image = pygame.image.load("final_race.jpg")
+                new_image = pygame.transform.scale(image, (1000, 700))
+                screen.blit(new_image, (0, 0))
                 f1 = pygame.font.SysFont('arial', 72)
                 text1 = f1.render("You Finished! Congratulations!", True,
                           (255, 255, 255))
-                screen.blit(text1, (100, 150))
+                screen.blit(text1, (100, 0))
                 f2 = pygame.font.SysFont('arial', 48)
                 text2 = f2.render("Time: " + str(time//60), True,
                               (255, 255, 255))
                 screen.blit(text2, (100, 400))
                 f3 = pygame.font.SysFont('arial', 48)
-                text3 = f3.render("Your result " + str(obj.score), True,
+                text3 = f3.render("Your result: " + str(obj.score), True,
                               (255, 255, 255))
-                screen.blit(text3, (100, 550))
+                screen.blit(text3, (100, 500))
             else:
                 image = pygame.image.load("family.jpg")
                 new_image = pygame.transform.scale(image, (1000, 700))
