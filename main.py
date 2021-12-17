@@ -1,5 +1,5 @@
 import pygame
-import numpy as np
+#import numpy as np
 
 from view import *
 from Car import *
@@ -146,6 +146,8 @@ while running:
         count+=1
     if count == 3:
         running = False
+    if car1.fuel <= 0:
+        running = False
 
     # Блок отрисовки всех элементов
     screen.fill((255, 255, 255))
@@ -158,11 +160,21 @@ while running:
     draw_console(screen, car1, actions, count, f1, time)
 
     # Проверка, не закончилась ли игра
-    game_over_screen(screen, car1, running, time, count)
     pygame.display.flip()
 
-np_drive = np.array(drive)
+
 best = np.loadtxt("time.txt")
+start = True
+while start:
+    for event in pygame.event.get():
+
+        # Диспетчеризация событий с клавиатуры
+        if event.type == pygame.QUIT:
+            start = False
+    game_over_screen(screen, car1, running, time, count,best[number])
+
+
+np_drive = np.array(drive)
 if number == 0 and count == 3 and time<best[0]:
     np.savetxt("massive0.txt", np_drive)
     new_best = np.array([time,best[1],best[2]])

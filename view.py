@@ -1,6 +1,7 @@
 import pygame
 from math import *
 from model import *
+import numpy as np
 
 def draw_car(screen,x,y,alpha,color):
     '''Рисует машинку (прямоугольник). Учитывает где ее центр и угол поворота.'''
@@ -96,7 +97,7 @@ def draw_fuel (screen, list_items, item_num_on_i_map, number,road,obj):
             pygame.draw.rect(screen, (125, 125, 125), (x+0.5*t, y+0.5*t, 1.2*t, 0.7*t))
 
 
-def game_over_screen (screen, obj, running, time, count):
+def game_over_screen (screen, obj, running, time, count,best):
     '''Запускает окно проигрыша по окончании игры.'''
     if obj.fuel <= 0:
         screen.fill((0, 0, 0))
@@ -115,32 +116,30 @@ def game_over_screen (screen, obj, running, time, count):
         text3 = f3.render("Your result " + str(obj.score), True,
                       (255, 0, 0))
         screen.blit(text3, (100, 550))
-    if not(running):
-        start = True
-        while start:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
-            screen.fill((0, 0, 0))
-            if count == 3:
-                image = pygame.image.load("final_race.jpg")
-                new_image = pygame.transform.scale(image, (1000, 700))
-                screen.blit(new_image, (0, 0))
-                f1 = pygame.font.SysFont('arial', 72)
-                text1 = f1.render("You Finished! Congratulations!", True,
+        pygame.display.update()
+    elif not(running):
+        if count == 3:
+            image = pygame.image.load("final_race.jpg")
+            new_image = pygame.transform.scale(image, (1000, 700))
+            screen.blit(new_image, (0, 0))
+            f1 = pygame.font.SysFont('arial', 72)
+            text1 = f1.render("You Finished! Congratulations!", True,
+                      (255, 255, 255))
+            screen.blit(text1, (100, 0))
+            f2 = pygame.font.SysFont('arial', 48)
+            text2 = f2.render("Time: " + str(time//60), True,
                           (255, 255, 255))
-                screen.blit(text1, (100, 0))
-                f2 = pygame.font.SysFont('arial', 48)
-                text2 = f2.render("Time: " + str(time//60), True,
+            screen.blit(text2, (100, 400))
+            f3 = pygame.font.SysFont('arial', 48)
+            text3 = f3.render("Your result: " + str(obj.score), True,
+                          (255, 255, 255))
+            screen.blit(text3, (100, 450))
+            f4 = pygame.font.SysFont('arial', 48)
+            text4 = f4.render("Best time: " + str(best//60), True,
                               (255, 255, 255))
-                screen.blit(text2, (100, 400))
-                f3 = pygame.font.SysFont('arial', 48)
-                text3 = f3.render("Your result: " + str(obj.score), True,
-                              (255, 255, 255))
-                screen.blit(text3, (100, 500))
-            else:
-                image = pygame.image.load("family.jpg")
-                new_image = pygame.transform.scale(image, (1000, 700))
-                screen.blit(new_image, (0, 0))
-            pygame.display.update()
+            screen.blit(text4, (100, 500))
+        else:
+            image = pygame.image.load("family.jpg")
+            new_image = pygame.transform.scale(image, (1000, 700))
+            screen.blit(new_image, (0, 0))
+        pygame.display.update()
