@@ -19,7 +19,7 @@ def draw_road(screen, road):
                       (255, 180, 0))
     screen.blit(text1, (200, 300))
 
-def draw_console(screen,obj,actions):
+def draw_console(screen,obj,actions, count, f1):
     x0 = 900
     y0 = 400
     pygame.draw.circle(screen,(0,0,0),(x0,y0),100,20)
@@ -40,11 +40,14 @@ def draw_console(screen,obj,actions):
         image = pygame.image.load("gas.png")
         new_image = pygame.transform.scale(image,(150,150))
         screen.blit(new_image,(800,500))
+    text1 = f1.render('Circle: ' + str(count), True, (0, 0, 0))
+    screen.blit(text1, (900, 50))
 
 
 def draw_coin (screen, number, list_items, item_num_on_i_map):
     for i in range (item_num_on_i_map[number][0]):
-        pygame.draw.circle(screen, (255, 215, 0), list_items[number][0][i], 5)
+        if list_items[number][0][i][2] == 1:
+            pygame.draw.circle(screen, (255, 215, 0), (list_items[number][0][i][0], list_items[number][0][i][1]), 5)
 
 def draw_fuel (screen, list_items, item_num_on_i_map, number):
     t = 5
@@ -60,15 +63,20 @@ def draw_fuel (screen, list_items, item_num_on_i_map, number):
                             (x+3*t, y+t),
                             (x+3*t, y+3*t),
                             (x, y+3*t)])
-        pygame.draw.polygon(screen, (255, 0, 0),
+        pygame.draw.polygon(screen, (0, 0, 0),
                             [(x+2.25*t, y+0.25*t),
-                            (x+2.75*t, y+0.75*t),
+                            (x+2.75*t, y),
                             (x+2.25*t, y+0.25*t),
                             (x+3*t, y+3*t),
                             (x, y+3*t)])
-        pygame.draw.rect(screen, (255, 0, 0), (x+0.5*t, y+0.5*t, 0.8*t, 0.2*t))
+        pygame.draw.rect(screen, (255, 255, 255), (x+0.5*t, y+0.5*t, 1.2*t, 0.7*t))
         
-        
+def collect_coin(obj, number, item_num_on_i_map, list_items):
+    for i in range (item_num_on_i_map[number][0]):
+        if (abs(obj.x - list_items[number][0][i][0]) +
+           abs(obj.y - list_items[number][0][i][1]) < 21) and (list_items[number][0][i][2] == 1):
+               obj.score += 1
+               list_items[number][0][i][2] = 0
 
 def game_over_screen (screen, obj, running, time):
     if obj.fuel <= 0:
