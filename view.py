@@ -70,7 +70,7 @@ def draw_fuel (screen, list_items, item_num_on_i_map, number):
         
         
 
-def game_over_screen (screen, obj):
+def game_over_screen (screen, obj, running, time):
     if obj.fuel <= 0:
         screen.fill((0, 0, 0))
         
@@ -88,3 +88,25 @@ def game_over_screen (screen, obj):
         text3 = f3.render("Your result " + obj.score, True,
                       (255, 0, 0))
         screen.blit(text1, (400, 400))
+    if not(running):
+        start = True
+        while start:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+            screen.fill((0, 0, 0))
+
+            f1 = pygame.font.SysFont('arial', 72)
+            text1 = f1.render("You Finished! Congratulations!", True,
+                          (255, 255, 255))
+            screen.blit(text1, (100, 150))
+            f2 = pygame.font.SysFont('arial', 48)
+            text2 = f2.render("Time: " + str(time//60), True,
+                              (255, 255, 255))
+            screen.blit(text2, (100, 400))
+            f3 = pygame.font.SysFont('arial', 48)
+            text3 = f3.render("Your result " + str(obj.score), True,
+                              (255, 255, 255))
+            screen.blit(text3, (100, 550))
+            pygame.display.update()

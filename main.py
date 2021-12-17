@@ -168,7 +168,7 @@ while running:
     draw_coin(screen, number, list_items, item_num_on_i_map)
     draw_fuel(screen, list_items, item_num_on_i_map, number)
     draw_car(screen, x, y, alpha, RED)
-  #  game_over_screen(screen, car1, list_items)
+    game_over_screen(screen, car1, running, time)
     pygame.display.flip()
 np_drive = np.array(drive)
 best = np.loadtxt("time.txt")
