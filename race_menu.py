@@ -31,18 +31,6 @@ class Button:
         if x < mouse[0] < x+self.width:
             if y < mouse[1] < y + self.height:
                 pygame.draw.rect(display, self.clr, (x, y, self.width, self.height))
-                '''if click[0] == 1 and self.type=='settings':
-                    a = show_settings()
-                    print(a)
-                    return(a)
-                elif click[0] == 1 and self.type=='start':
-                    return True
-                elif click[0] == 1 and self.type=='Map 1':
-                    return True
-                elif click[0] == 1 and self.type=='Map 2':
-                    return True
-                elif click[0] == 1 and self.type=='Map 3':
-                    return True'''
         print_text(message, x+10, y+10)
 
     def click(self, x, y, message, action=None):

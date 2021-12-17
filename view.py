@@ -10,15 +10,21 @@ def draw_car(screen,x,y,alpha,color):
              (x + s * cos(alpha) + 2 * s * sin(alpha), y + s * sin(alpha) - 2 * s * cos(alpha)),
              (x - s * cos(alpha) + 2 * s * sin(alpha), y - s * sin(alpha) - 2 * s * cos(alpha))])
 
-def draw_road(screen, road):
+def draw_road(screen, road, number):
     t = 12
     for element in road.par:
         pygame.draw.rect(screen,(125,125,125),element)
     pygame.draw.rect(screen, (0, 0, 0), road.par[-1])
-    f1 = pygame.font.SysFont('arial', 56)
-    text1 = f1.render("Alpha", True,
+    names = ["Alpha", "Bravo", "Charlie"]
+    f = pygame.font.SysFont('arial', 56)
+    text = f.render(names[number], True,
                       (255, 180, 0))
-    screen.blit(text1, (200, 300))
+    if number == 0:
+        screen.blit(text, (200, 300))
+    elif number == 1:
+        screen.blit(text, (25, 25))
+    elif number == 2:
+        screen.blit(text, (25, 25))
 
 def draw_console(screen,obj,actions, count, f1,time):
     x0 = 900

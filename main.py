@@ -159,7 +159,7 @@ while running:
         count+=1
     if count == 3:
         running = False
-    draw_road(screen, road)
+    draw_road(screen, road, number)
     if time//5 < len(shadow):
         draw_car(screen, shadow[time//5][0],shadow[time//5][1],shadow[time//5][2],BLACK)
     draw_console(screen,car1,actions,count, f1,time)
@@ -170,6 +170,7 @@ while running:
     draw_car(screen, x, y, alpha, RED)
     game_over_screen(screen, car1, running, time, count)
     pygame.display.flip()
+
 np_drive = np.array(drive)
 best = np.loadtxt("time.txt")
 if number == 0 and count == 3 and time<best[0]:
